@@ -2,9 +2,9 @@
 
 namespace Rmirandasv\Shadlar;
 
+use Rmirandasv\Shadlar\Commands\ShadlarCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
-use Rmirandasv\Shadlar\Commands\ShadlarCommand;
 
 class ShadlarServiceProvider extends PackageServiceProvider
 {
@@ -34,7 +34,7 @@ class ShadlarServiceProvider extends PackageServiceProvider
     {
         // Publish CSS assets to the application's resources directory.
         $this->publishes([
-            __DIR__ . '/../resources/css/app.css' => resource_path('css/vendor/shadlar.css'),
+            __DIR__.'/../resources/css/app.css' => resource_path('css/vendor/shadlar.css'),
         ], 'shadlar-assets');
     }
 }
