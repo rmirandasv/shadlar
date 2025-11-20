@@ -1,0 +1,6 @@
+<tbody
+    {{ $attributes }}
+>
+    {{ $slot }}
+</tbody>
+

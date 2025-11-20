@@ -1,0 +1,280 @@
+@import "tailwindcss";
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+/* Alpine.js x-cloak */
+[x-cloak] {
+    display: none !important;
+}
+
+/* Theme tokens (light mode by default) */
+@theme {
+    /* primary */
+    --color-primary: red;
+    --color-primary-foreground: #ffffff;
+
+    /* secondary */
+    --color-secondary: hsl(210deg 40% 96%);
+    --color-secondary-foreground: hsl(222deg 47% 11%);
+
+    /* subtle foreground/background used for ghost/outlined states */
+    --color-muted: hsl(210deg 40% 96%);
+    --color-muted-foreground: hsl(222deg 47% 11%);
+
+    /* focus ring */
+    --color-ring: oklch(55.4% 0.046 257.417);
+
+    /* alert colors */
+    --color-success: hsl(142deg 76% 36%);
+    --color-success-foreground: hsl(142deg 76% 25%);
+    --color-success-bg: hsl(142deg 76% 36% / 0.1);
+    --color-success-border: hsl(142deg 76% 36% / 0.2);
+
+    --color-error: hsl(0deg 84% 60%);
+    --color-error-foreground: hsl(0deg 84% 45%);
+    --color-error-bg: hsl(0deg 84% 60% / 0.1);
+    --color-error-border: hsl(0deg 84% 60% / 0.2);
+
+    --color-warning: hsl(38deg 92% 50%);
+    --color-warning-foreground: hsl(38deg 92% 35%);
+    --color-warning-bg: hsl(38deg 92% 50% / 0.1);
+    --color-warning-border: hsl(38deg 92% 50% / 0.2);
+
+    --color-info: hsl(217deg 91% 60%);
+    --color-info-foreground: hsl(217deg 91% 45%);
+    --color-info-bg: hsl(217deg 91% 60% / 0.1);
+    --color-info-border: hsl(217deg 91% 60% / 0.2);
+
+    /* dialog colors */
+    --color-dialog-overlay: hsl(0deg 0% 0% / 0.5);
+    --color-dialog-background: #ffffff;
+    --color-dialog-foreground: hsl(222deg 47% 11%);
+    --color-dialog-border: hsl(214deg 32% 91%);
+
+    /* card colors */
+    --color-card-background: #ffffff;
+    --color-card-foreground: hsl(222deg 47% 11%);
+    --color-card-border: hsl(214deg 32% 91%);
+
+    /* destructive color (for badges and destructive actions) */
+    --color-destructive: hsl(0deg 84% 60%);
+    --color-destructive-foreground: #ffffff;
+
+    /* dropdown colors */
+    --color-dropdown-background: #ffffff;
+    --color-dropdown-foreground: hsl(222deg 47% 11%);
+    --color-dropdown-border: hsl(214deg 32% 91%);
+    --color-dropdown-hover: hsl(210deg 40% 96%);
+
+    /* sidebar colors */
+    --sidebar-background: #ffffff;
+    --sidebar-foreground: hsl(222deg 47% 11%);
+    --sidebar-border: hsl(214deg 32% 91%);
+    --sidebar-primary: hsl(222deg 47% 11%);
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: hsl(210deg 40% 96%);
+    --sidebar-accent-foreground: hsl(222deg 47% 11%);
+    --sidebar-muted: hsl(210deg 40% 96%);
+    --sidebar-muted-foreground: hsl(215deg 16% 47%);
+
+    /* form colors */
+    --form-background: #ffffff;
+    --form-foreground: hsl(222deg 47% 11%);
+    --form-border: hsl(214deg 32% 91%);
+    --form-placeholder: hsl(215deg 16% 47%);
+    --form-disabled: hsl(210deg 40% 96%);
+    --form-disabled-foreground: hsl(215deg 16% 47%);
+    --form-focus-ring: var(--color-ring);
+    --form-error: var(--color-error);
+    --form-error-foreground: var(--color-error-foreground);
+    --form-label: hsl(222deg 47% 11%);
+    --form-helper: hsl(215deg 16% 47%);
+
+    /* tabs colors */
+    --tabs-list-background: hsl(210deg 40% 96%);
+    --tabs-trigger-foreground: hsl(215deg 16% 47%);
+    --tabs-trigger-active-foreground: hsl(222deg 47% 11%);
+    --tabs-trigger-hover-foreground: hsl(222deg 47% 11%);
+    --tabs-content-foreground: hsl(222deg 47% 11%);
+
+    /* table colors */
+    --table-background: #ffffff;
+    --table-foreground: hsl(222deg 47% 11%);
+    --table-border: hsl(214deg 32% 91%);
+    --table-header-background: hsl(210deg 40% 96%);
+    --table-header-foreground: hsl(222deg 47% 11%);
+    --table-row-hover: hsl(210deg 40% 96%);
+    --table-row-border: hsl(214deg 32% 91%);
+
+    /* pagination colors */
+    --pagination-background: #ffffff;
+    --pagination-foreground: hsl(222deg 47% 11%);
+    --pagination-border: hsl(214deg 32% 91%);
+    --pagination-hover: hsl(210deg 40% 96%);
+    --pagination-active-background: hsl(222deg 47% 11%);
+    --pagination-active-foreground: #ffffff;
+    --pagination-disabled: hsl(210deg 40% 96%);
+    --pagination-disabled-foreground: hsl(215deg 16% 47%);
+
+    /* empty state colors */
+    --empty-background: transparent;
+    --empty-foreground: hsl(222deg 47% 11%);
+    --empty-muted-foreground: hsl(215deg 16% 47%);
+    --empty-icon-foreground: hsl(215deg 16% 47%);
+
+    /* combobox colors */
+    --combobox-background: var(--form-background);
+    --combobox-foreground: var(--form-foreground);
+    --combobox-border: var(--form-border);
+    --combobox-hover: var(--dropdown-hover);
+
+    /* navigation menu colors */
+    --navigation-background: transparent;
+    --navigation-foreground: hsl(222deg 47% 11%);
+    --navigation-border: hsl(214deg 32% 91%);
+    --navigation-link-hover: hsl(210deg 40% 96%);
+    --navigation-link-active: hsl(222deg 47% 11%);
+    --navigation-link-active-foreground: #ffffff;
+
+    /* avatar colors */
+    --avatar-background: hsl(210deg 40% 96%);
+    --avatar-foreground: hsl(222deg 47% 11%);
+    --avatar-border: hsl(214deg 32% 91%);
+    --avatar-fallback-background: hsl(210deg 40% 96%);
+    --avatar-fallback-foreground: hsl(222deg 47% 11%);
+}
+
+@theme dark {
+    --color-primary: hsl(217deg 91% 60%);
+    --color-primary-foreground: #ffffff;
+
+    --color-secondary: hsl(222deg 47% 11%);
+    --color-secondary-foreground: hsl(210deg 40% 98%);
+
+    --color-muted: hsl(222deg 47% 16%);
+    --color-muted-foreground: hsl(210deg 40% 98%);
+
+    --color-ring: hsl(217deg 91% 60%);
+
+    /* alert colors */
+    --color-success: hsl(142deg 70% 45%);
+    --color-success-foreground: hsl(142deg 70% 70%);
+    --color-success-bg: hsl(142deg 70% 45% / 0.15);
+    --color-success-border: hsl(142deg 70% 45% / 0.3);
+
+    --color-error: hsl(0deg 72% 51%);
+    --color-error-foreground: hsl(0deg 72% 75%);
+    --color-error-bg: hsl(0deg 72% 51% / 0.15);
+    --color-error-border: hsl(0deg 72% 51% / 0.3);
+
+    --color-warning: hsl(38deg 92% 50%);
+    --color-warning-foreground: hsl(38deg 92% 70%);
+    --color-warning-bg: hsl(38deg 92% 50% / 0.15);
+    --color-warning-border: hsl(38deg 92% 50% / 0.3);
+
+    --color-info: hsl(217deg 91% 60%);
+    --color-info-foreground: hsl(217deg 91% 75%);
+    --color-info-bg: hsl(217deg 91% 60% / 0.15);
+    --color-info-border: hsl(217deg 91% 60% / 0.3);
+
+    /* dialog colors */
+    --color-dialog-overlay: hsl(0deg 0% 0% / 0.8);
+    --color-dialog-background: hsl(222deg 47% 11%);
+    --color-dialog-foreground: hsl(210deg 40% 98%);
+    --color-dialog-border: hsl(217deg 19% 27%);
+
+    /* card colors */
+    --color-card-background: hsl(222deg 47% 11%);
+    --color-card-foreground: hsl(210deg 40% 98%);
+    --color-card-border: hsl(217deg 19% 27%);
+
+    /* destructive color (for badges and destructive actions) */
+    --color-destructive: hsl(0deg 72% 51%);
+    --color-destructive-foreground: #ffffff;
+
+    /* dropdown colors */
+    --color-dropdown-background: hsl(222deg 47% 11%);
+    --color-dropdown-foreground: hsl(210deg 40% 98%);
+    --color-dropdown-border: hsl(217deg 19% 27%);
+    --color-dropdown-hover: hsl(222deg 47% 16%);
+
+    /* sidebar colors */
+    --sidebar-background: hsl(222deg 47% 11%);
+    --sidebar-foreground: hsl(210deg 40% 98%);
+    --sidebar-border: hsl(217deg 19% 27%);
+    --sidebar-primary: hsl(217deg 91% 60%);
+    --sidebar-primary-foreground: #ffffff;
+    --sidebar-accent: hsl(222deg 47% 16%);
+    --sidebar-accent-foreground: hsl(210deg 40% 98%);
+    --sidebar-muted: hsl(222deg 47% 16%);
+    --sidebar-muted-foreground: hsl(215deg 16% 57%);
+
+    /* form colors */
+    --form-background: hsl(222deg 47% 11%);
+    --form-foreground: hsl(210deg 40% 98%);
+    --form-border: hsl(217deg 19% 27%);
+    --form-placeholder: hsl(215deg 16% 57%);
+    --form-disabled: hsl(222deg 47% 16%);
+    --form-disabled-foreground: hsl(215deg 16% 57%);
+    --form-focus-ring: var(--color-ring);
+    --form-error: var(--color-error);
+    --form-error-foreground: var(--color-error-foreground);
+    --form-label: hsl(210deg 40% 98%);
+    --form-helper: hsl(215deg 16% 57%);
+
+    /* tabs colors */
+    --tabs-list-background: hsl(222deg 47% 16%);
+    --tabs-trigger-foreground: hsl(215deg 16% 57%);
+    --tabs-trigger-active-foreground: hsl(210deg 40% 98%);
+    --tabs-trigger-hover-foreground: hsl(210deg 40% 98%);
+    --tabs-content-foreground: hsl(210deg 40% 98%);
+
+    /* table colors */
+    --table-background: hsl(222deg 47% 11%);
+    --table-foreground: hsl(210deg 40% 98%);
+    --table-border: hsl(217deg 19% 27%);
+    --table-header-background: hsl(222deg 47% 16%);
+    --table-header-foreground: hsl(210deg 40% 98%);
+    --table-row-hover: hsl(222deg 47% 16%);
+    --table-row-border: hsl(217deg 19% 27%);
+
+    /* pagination colors */
+    --pagination-background: hsl(222deg 47% 11%);
+    --pagination-foreground: hsl(210deg 40% 98%);
+    --pagination-border: hsl(217deg 19% 27%);
+    --pagination-hover: hsl(222deg 47% 16%);
+    --pagination-active-background: hsl(217deg 91% 60%);
+    --pagination-active-foreground: #ffffff;
+    --pagination-disabled: hsl(222deg 47% 16%);
+    --pagination-disabled-foreground: hsl(215deg 16% 57%);
+
+    /* empty state colors */
+    --empty-background: transparent;
+    --empty-foreground: hsl(210deg 40% 98%);
+    --empty-muted-foreground: hsl(215deg 16% 57%);
+    --empty-icon-foreground: hsl(215deg 16% 57%);
+
+    /* combobox colors */
+    --combobox-background: var(--form-background);
+    --combobox-foreground: var(--form-foreground);
+    --combobox-border: var(--form-border);
+    --combobox-hover: var(--dropdown-hover);
+
+    /* navigation menu colors */
+    --navigation-background: transparent;
+    --navigation-foreground: hsl(210deg 40% 98%);
+    --navigation-border: hsl(217deg 19% 27%);
+    --navigation-link-hover: hsl(222deg 47% 16%);
+    --navigation-link-active: hsl(217deg 91% 60%);
+    --navigation-link-active-foreground: #ffffff;
+
+    /* avatar colors */
+    --avatar-background: hsl(222deg 47% 16%);
+    --avatar-foreground: hsl(210deg 40% 98%);
+    --avatar-border: hsl(217deg 19% 27%);
+    --avatar-fallback-background: hsl(222deg 47% 16%);
+    --avatar-fallback-foreground: hsl(210deg 40% 98%);
+}

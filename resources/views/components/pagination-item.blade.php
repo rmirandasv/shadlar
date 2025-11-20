@@ -1,0 +1,6 @@
+<li
+    {{ $attributes }}
+>
+    {{ $slot }}
+</li>
+

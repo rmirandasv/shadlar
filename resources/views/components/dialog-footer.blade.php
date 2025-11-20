@@ -1,0 +1,8 @@
+<div
+    {{ $attributes->class([
+        'flex flex-col-reverse sm:flex-row sm:justify-end sm:space-x-2 gap-2 p-6 pt-4',
+    ]) }}
+>
+    {{ $slot }}
+</div>
+
